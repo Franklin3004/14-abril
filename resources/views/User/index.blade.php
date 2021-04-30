@@ -13,6 +13,8 @@
     <div class="row">
         <div class="col-md-12">
             <br>
+            <a href="{{ url('users/create') }}" class="btn btn-primary">Crear nuevo usuario</a>
+            <br><br>
             <table class="table table-striped table-bordered" >
                 <thead>
                  <tr>
@@ -20,6 +22,7 @@
                      <th>NOMBRE</th>
                      <th>APELLIDO</th>
                      <th>CORREO ELECTRONICO</th>
+                     <th>OPCIONES</th>
                  </tr>
                 </thead>
                 <tbody>
@@ -29,6 +32,11 @@
                         <td>{{$user->name }}</td>
                         <td>{{$user->lastname }}</td>
                         <td>{{$user->email}}</td>
+                        <td>
+                            <a href="{{url('users',$user->id)}}" class="btn btn-info btn-sm">Detalles</a>
+                            <a href="" class="btn btn-warning btn-sm ">Editar</a>
+                            <a href="" class="btn btn-danger btn-sm ">Eliminar</a>
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>
