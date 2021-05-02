@@ -26,12 +26,25 @@ class UserController extends Controller
     {
         //INSERT INTO usuarios () VALUES()
         $user = User::create($request->all());
-        return redirect('users');
+        return redirect('users')->with('status', 'Se ha creado un usuario correctamente :).');
 
     }
     public function show($id){
         //
         $user = User::find($id);
         return view('user.show', compact('user'));
+    }
+    public function destroy($id){
+        //delete from users where id=?
+        $user = User::find($id)-> delete();
+        return redirect('users')->with('status','Se ha eliminado el registro :(');
+    }
+    public function edit($id){
+        $user = User::find($id);
+        return view('user.edit', compact('user'));
+    }
+    public function update(Request $request, $id){
+        $user = User::find($id)->update($request->all());
+        return redirect('users')->with('status','Se ha actualizado correctamente un usuario :]');
     }
 }
